@@ -1,4 +1,23 @@
-console.log("<======= Rock Paper Scissors! =======>");
+function playRound(player, computer) {
+  if (player === computer) {
+    console.log("Draw");
+    return "Draw";
+  } else if (
+    (player === "Rock" && computer === "Scissors") ||
+    (player === "Paper" && computer === "Rock") ||
+    (player === "Scissors" && computer === "Paper")
+  ) {
+    console.log("Player Wins!");
+    return "Player Wins!";
+  } else if (
+    (computer === "Rock" && player === "Scissors") ||
+    (computer === "Paper" && player === "Rock") ||
+    (computer === "Scissors" && player === "Paper")
+  ) {
+    console.log("Computer Wins!");
+    return "Computer Wins!";
+  }
+}
 
 function getComputerChoice() {
   const choice = ["Rock", "Paper", "Scissors"];
@@ -6,19 +25,7 @@ function getComputerChoice() {
   return choice[random];
 }
 
-const computerChoice = getComputerChoice();
-const playerChoice = "Rock";
-
-function play(playerChoice, computerChoice) {
-  if (computerChoice === "Rock") {
-    return "Draw";
-  } else if (computerChoice === "Paper") {
-    return "Computer wins!";
-  } else if (computerChoice === "Scissors") {
-    return "Player wins!";
-  } else {
-    return "Please pick a valid choice";
-  }
+function handleClick(playerSelection) {
+  const computerSelection = getComputerChoice();
+  playRound(playerSelection, computerSelection);
 }
-
-console.log(play(playerChoice, computerChoice));
