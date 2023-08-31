@@ -1,3 +1,6 @@
+let playerScore = 0;
+let computerScore = 0;
+
 function playRound(player, computer) {
   if (player === computer) {
     console.log("Draw");
@@ -8,6 +11,8 @@ function playRound(player, computer) {
     (player === "Scissors" && computer === "Paper")
   ) {
     console.log("Player Wins!");
+    playerScore++;
+    isGameOver();
     return "Player Wins!";
   } else if (
     (computer === "Rock" && player === "Scissors") ||
@@ -15,7 +20,17 @@ function playRound(player, computer) {
     (computer === "Scissors" && player === "Paper")
   ) {
     console.log("Computer Wins!");
+    computerScore++;
+    isGameOver();
     return "Computer Wins!";
+  }
+}
+
+function isGameOver() {
+  if (playerScore === 5) {
+    return alert("Game Over, Player Wins!");
+  } else if (computerScore === 5) {
+    return alert("Game Over, Computer Wins!");
   }
 }
 
